@@ -109,7 +109,7 @@ appears earliest in the original string. */
 function high(str) {
   const separeteWords = str.toLowerCase().split(" ");
 
-  const eachWordScoreArray = separeteWords.map(word => {
+  const eachWordScoreArray = separeteWords.map((word) => {
     let wordValue = 0;
     for (let i = 0; i < word.length; i++) {
       wordValue += word[i].charCodeAt() - 96;
@@ -122,3 +122,18 @@ function high(str) {
 
   return separeteWords[index];
 }
+
+/* You need to write regex that will validate a password to make sure it meets the following criteria:
+At least six characters long
+contains a lowercase letter
+contains an uppercase letter
+contains a number */
+
+function validate(password) {
+  return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,}$/.test(password);
+}
+
+/* ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. 
+ROT13 is an example of the Caesar cipher. Create a function that takes a string and returns the string ciphered with Rot13. 
+If there are numbers or special characters included in the string, they should be returned as they are. 
+Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation". */
