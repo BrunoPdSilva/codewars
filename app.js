@@ -137,3 +137,27 @@ function validate(password) {
 ROT13 is an example of the Caesar cipher. Create a function that takes a string and returns the string ciphered with Rot13. 
 If there are numbers or special characters included in the string, they should be returned as they are. 
 Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation". */
+
+function rot13(message) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  const unicodeList = message.split("").map(letter => {
+    let uniCode = letter.charCodeAt() - 96;
+
+    if (uniCode <= 13 && uniCode >= 1 && uniCode <= 26) {
+      return alphabet[uniCode - 1 + 13];
+    } else if (uniCode > 13 && uniCode >= 1 && uniCode <= 26) {
+      return alphabet[uniCode - 1 - 13];
+    } else if (uniCode >= -31 && uniCode <= -6) {
+      let upperCode = uniCode + 32;
+
+      if (upperCode <= 13 && upperCode >= 1 && upperCode <= 26) {
+        return alphabet[upperCode - 1 + 13].toUpperCase();
+      } else if (upperCode > 13 && upperCode >= 1 && upperCode <= 26) {
+        return alphabet[upperCode - 1 - 13].toUpperCase();
+      }
+    }
+    return letter;
+  });
+  return unicodeList.join("");
+}
