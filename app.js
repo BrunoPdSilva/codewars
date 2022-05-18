@@ -2,7 +2,7 @@
 It should remove all values from list a, which are present in list b keeping their order.*/
 
 function arrayDiff(a, b) {
-  b.forEach((number) => {
+  b.forEach(number => {
     for (let i = 0; i < a.length; i++) {
       if (a[i] === number) {
         a.splice(i, 1);
@@ -56,7 +56,7 @@ function alphabetPosition(text) {
   text
     .toLowerCase()
     .split("")
-    .forEach((letter) =>
+    .forEach(letter =>
       letter.charCodeAt() >= 97 && letter.charCodeAt() <= 122
         ? (positions += " " + (letter.charCodeAt() - 96))
         : positions
@@ -109,7 +109,7 @@ appears earliest in the original string. */
 function high(str) {
   const separeteWords = str.toLowerCase().split(" ");
 
-  const eachWordScoreArray = separeteWords.map((word) => {
+  const eachWordScoreArray = separeteWords.map(word => {
     let wordValue = 0;
     for (let i = 0; i < word.length; i++) {
       wordValue += word[i].charCodeAt() - 96;
@@ -160,4 +160,30 @@ function rot13(message) {
     return letter;
   });
   return unicodeList.join("");
+}
+
+/* Here's the deal:
+It must start with a hashtag (#).
+All words must have their first letter capitalized.
+If the final result is longer than 140 chars it must return false.
+If the input or the result is an empty string it must return false. */
+
+function generateHashtag(str) {
+  if (str.charCodeAt() == 32 || str == "") {
+    return false;
+  }
+
+  const splitedStr = str.trim().toLowerCase().split(" ");
+  const noWhiteSpace = [];
+
+  splitedStr.forEach(word => {
+    if (word != "") {
+      noWhiteSpace.push(word.replace(/^./, word[0].toUpperCase()))
+    }
+  })
+
+  noWhiteSpace.unshift("#");
+  const resultStr = noWhiteSpace.join("");
+
+  return resultStr.length > 140 ? false : resultStr
 }
