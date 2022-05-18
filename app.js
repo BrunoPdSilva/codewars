@@ -169,21 +169,12 @@ If the final result is longer than 140 chars it must return false.
 If the input or the result is an empty string it must return false. */
 
 function generateHashtag(str) {
-  if (str.charCodeAt() == 32 || str == "") {
-    return false;
-  }
-
+  if (str.charCodeAt() == 32 || str == "") return false;
   const splitedStr = str.trim().toLowerCase().split(" ");
-  const noWhiteSpace = [];
+  const noWhiteSpace = ['#'];
 
-  splitedStr.forEach(word => {
-    if (word != "") {
-      noWhiteSpace.push(word.replace(/^./, word[0].toUpperCase()))
-    }
-  })
-
-  noWhiteSpace.unshift("#");
-  const resultStr = noWhiteSpace.join("");
-
-  return resultStr.length > 140 ? false : resultStr
+  for (let word of splitedStr) {
+    if (word != "") noWhiteSpace.push(word.replace(/^./, word[0].toUpperCase()))
+  }
+  return noWhiteSpace.join("").length > 140 ? false : noWhiteSpace.join("");
 }
