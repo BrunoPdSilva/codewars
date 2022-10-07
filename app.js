@@ -171,10 +171,27 @@ If the input or the result is an empty string it must return false. */
 function generateHashtag(str) {
   if (str.charCodeAt() == 32 || str == "") return false;
   const splitedStr = str.trim().toLowerCase().split(" ");
-  const noWhiteSpace = ['#'];
+  const noWhiteSpace = ["#"];
 
   for (let word of splitedStr) {
-    if (word != "") noWhiteSpace.push(word.replace(/^./, word[0].toUpperCase()))
+    if (word != "")
+      noWhiteSpace.push(word.replace(/^./, word[0].toUpperCase()));
   }
   return noWhiteSpace.join("").length > 140 ? false : noWhiteSpace.join("");
+}
+
+/* Write a function that will check if two given characters are the same case.
+
+If either of the characters is not a letter, return -1
+If both characters are the same case, return 1
+If both characters are letters, but not the same case, return 0 */
+
+function sameCase(a, b) {
+  if (/[A-Z]/.test(a) && /[A-Z]/.test(b) || /[a-z]/.test(a) && /[a-z]/.test(b)) {
+    return 1
+  } else if (/[A-Za-z]/.test(a) && /[A-Za-z]/.test(b)) {
+    return 0
+  } else if (/[^A-Za-z]/.test(a) || /[^A-Za-z]/.test(b)){
+    return -1
+  }
 }
