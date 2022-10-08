@@ -187,11 +187,109 @@ If both characters are the same case, return 1
 If both characters are letters, but not the same case, return 0 */
 
 function sameCase(a, b) {
-  if (/[A-Z]/.test(a) && /[A-Z]/.test(b) || /[a-z]/.test(a) && /[a-z]/.test(b)) {
-    return 1
+  if (
+    (/[A-Z]/.test(a) && /[A-Z]/.test(b)) ||
+    (/[a-z]/.test(a) && /[a-z]/.test(b))
+  ) {
+    return 1;
   } else if (/[A-Za-z]/.test(a) && /[A-Za-z]/.test(b)) {
-    return 0
-  } else if (/[^A-Za-z]/.test(a) || /[^A-Za-z]/.test(b)){
-    return -1
+    return 0;
+  } else if (/[^A-Za-z]/.test(a) || /[^A-Za-z]/.test(b)) {
+    return -1;
   }
+}
+
+/* All of the animals are having a feast! Each animal is bringing one dish. There is just one rule: the dish must start and end with the same letters as the animal's name. For example, the great blue heron is bringing garlic naan and the chickadee is bringing chocolate cake.
+
+Write a function feast that takes the animal's name and dish as arguments and returns true or false to indicate whether the beast is allowed to bring the dish to the feast. */
+
+function feast(beast, dish) {
+  const beastLetters = "" + beast[0] + beast[beast.length - 1];
+  const dishLetters = "" + dish[0] + dish[dish.length - 1];
+
+  return beastLetters === dishLetters ? true : false;
+}
+
+/* Our team's match results are recorded in a collection of strings. Each match is represented by a string in the format "x:y", where x is our team's score and y is our opponents score.
+
+For example: ["3:1", "2:2", "0:1", ...]
+
+Points are awarded for each match as follows:
+
+if x > y: 3 points (win)
+if x < y: 0 points (loss)
+if x = y: 1 point (tie) */
+
+function points(games) {
+  let result = 0;
+
+  games.forEach(score => {
+    if (score[0] > score[2]) {
+      result += 3;
+    } else if (score[0] === score[2]) {
+      result += 1;
+    }
+  });
+
+  return result;
+}
+
+/* Create a function that returns the name of the winner in a fight between two fighters.
+
+Each fighter takes turns attacking the other and whoever kills the other first is victorious. Death is defined as having health <= 0.
+
+Each fighter will be a Fighter object/instance. See the Fighter class below in your chosen language.
+
+Both health and damagePerAttack (damage_per_attack for python) will be integers larger than 0. You can mutate the Fighter objects.
+
+Your function also receives a third argument, a string, with the name of the fighter that attacks first. */
+
+/* class Fighter {
+  constructor(name, health, attack) {
+    this.name = name;
+    this.health = health;
+    this.attack = attack;
+  }
+} */
+
+function Fighter(name, health, damagePerAttack) {
+  this.name = name;
+  this.health = health;
+  this.damagePerAttack = damagePerAttack;
+  this.toString = function() { return this.name; }
+}
+
+function declareWinner(fighter1, fighter2, firstAttacker) {
+  let winner = "";
+
+  if (fighter1.name === firstAttacker) {
+    while (fighter1.health > 0 || fighter2.health > 0) {
+      fighter2.health -= fighter1.damagePerAttack;
+      if (fighter2.health <= 0) {
+        winner = fighter1.name;
+        break;
+      }
+
+      fighter1.health -= fighter2.damagePerAttack;
+      if (fighter1.health <= 0) {
+        winner = fighter2.name;
+        break;
+      }
+    }
+  } else {
+    while (fighter1.health > 0 || fighter2.health > 0) {
+      fighter1.health -= fighter2.damagePerAttack;
+      if (fighter1.health <= 0) {
+        winner = fighter2.name;
+        break;
+      }
+
+      fighter2.health -= fighter1.damagePerAttack;
+      if (fighter2.health <= 0) {
+        winner = fighter1.name;
+        break;
+      }
+    }
+  }
+  return winner;
 }
