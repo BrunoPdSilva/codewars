@@ -298,3 +298,46 @@ function highAndLow(numbers) {
 
   return `${highestNumber} ${lowestNumber}`;
 }
+
+/* 
+Oh, no! The number has been mixed up with the text. Your goal is to retrieve the number from the text, can you return the number back to its original state?
+Your task is to return a number from a string.
+*/
+
+const filterString = str => Number(str.split("").filter(item => /[0-9]/.test(item)).join(""));
+
+/* 
+If　a = 1, b = 2, c = 3 ... z = 26
+
+Then l + o + v + e = 54
+
+and f + r + i + e + n + d + s + h + i + p = 108
+
+So friendship is twice as strong as love :-)
+
+Your task is to write a function which calculates the value of a word based off the sum of the alphabet positions of its characters.
+
+The input will always be made of only lowercase letters and will never be empty.
+*/
+
+function wordsToMarks(string){
+  return string.split("").reduce((acc, curr) => acc += curr.charCodeAt() - 96, 0)
+}
+
+/* 
+Positive integers that are divisible exactly by the sum of their digits are called Harshad numbers. The first few Harshad numbers are: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, ...
+
+We are interested in Harshad numbers where the product of its digit sum s and s with the digits reversed, gives the original number n. For example consider number 1729:
+
+its digit sum, s = 1 + 7 + 2 + 9 = 19
+reversing s = 91
+and 19 * 91 = 1729 --> the number that we started with.
+Complete the function which tests if a positive integer n is Harshad number, and returns True if the product of its digit sum and its digit sum reversed equals n; otherwise return False.
+*/
+
+function numberJoy(n) {
+  const sum = String(n).split("").reduce((acc, curr) => acc += Number(curr), 0);
+  const reverseSum = Number(sum.toString().split("").reverse().join(""));
+
+  return n % sum === 0 && sum * reverseSum === n ? true : false;
+}
