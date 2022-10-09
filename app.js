@@ -244,19 +244,13 @@ Both health and damagePerAttack (damage_per_attack for python) will be integers 
 
 Your function also receives a third argument, a string, with the name of the fighter that attacks first. */
 
-/* class Fighter {
-  constructor(name, health, attack) {
-    this.name = name;
-    this.health = health;
-    this.attack = attack;
-  }
-} */
-
 function Fighter(name, health, damagePerAttack) {
   this.name = name;
   this.health = health;
   this.damagePerAttack = damagePerAttack;
-  this.toString = function() { return this.name; }
+  this.toString = function () {
+    return this.name;
+  };
 }
 
 function declareWinner(fighter1, fighter2, firstAttacker) {
@@ -292,4 +286,15 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
     }
   }
   return winner;
+}
+
+/* In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number. */
+
+function highAndLow(numbers) {
+  const orderedNumbersArray = numbers.split(" ").sort((a, b) => a - b);
+
+  const lowestNumber = orderedNumbersArray[0];
+  const highestNumber = orderedNumbersArray[orderedNumbersArray.length - 1];
+
+  return `${highestNumber} ${lowestNumber}`;
 }
