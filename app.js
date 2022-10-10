@@ -304,7 +304,13 @@ Oh, no! The number has been mixed up with the text. Your goal is to retrieve the
 Your task is to return a number from a string.
 */
 
-const filterString = str => Number(str.split("").filter(item => /[0-9]/.test(item)).join(""));
+const filterString = str =>
+  Number(
+    str
+      .split("")
+      .filter(item => /[0-9]/.test(item))
+      .join("")
+  );
 
 /* 
 If　a = 1, b = 2, c = 3 ... z = 26
@@ -320,8 +326,10 @@ Your task is to write a function which calculates the value of a word based off 
 The input will always be made of only lowercase letters and will never be empty.
 */
 
-function wordsToMarks(string){
-  return string.split("").reduce((acc, curr) => acc += curr.charCodeAt() - 96, 0)
+function wordsToMarks(string) {
+  return string
+    .split("")
+    .reduce((acc, curr) => (acc += curr.charCodeAt() - 96), 0);
 }
 
 /* 
@@ -336,8 +344,35 @@ Complete the function which tests if a positive integer n is Harshad number, and
 */
 
 function numberJoy(n) {
-  const sum = String(n).split("").reduce((acc, curr) => acc += Number(curr), 0);
+  const sum = String(n)
+    .split("")
+    .reduce((acc, curr) => (acc += Number(curr)), 0);
   const reverseSum = Number(sum.toString().split("").reverse().join(""));
 
   return n % sum === 0 && sum * reverseSum === n ? true : false;
+}
+
+/* ISBN-10 identifiers are ten digits long. The first nine characters are digits 0-9. The last digit can be 0-9 or X, to indicate a value of 10.
+
+An ISBN-10 number is valid if the sum of the digits multiplied by their position modulo 11 equals zero.
+
+For example:
+
+ISBN     : 1 1 1 2 2 2 3 3 3  9
+position : 1 2 3 4 5 6 7 8 9 10 */
+
+function validISBN10(isbn) {
+  if (/^[0-9]{9}[X0-9]$/.test(isbn)) {
+    const product = isbn
+      .split("")
+      .reduce(
+        (acc, curr, i) =>
+          curr === "X" ? acc + 10 * (i + 1) : acc + Number(curr) * (i + 1),
+        0
+      );
+
+    return product % 11 === 0 ? true : false;
+  } else {
+    return false;
+  }
 }
