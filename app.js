@@ -385,3 +385,26 @@ For example: sumStrings('1','2') // => '3' */
 function sumStrings(a, b) {
   return (BigInt(a) + BigInt(b)).toString(10);
 }
+
+/* Complete the method which accepts an array of integers, and returns one of the following:
+
+"yes, ascending" - if the numbers in the array are sorted in an ascending order
+"yes, descending" - if the numbers in the array are sorted in a descending order
+"no" - otherwise
+You can assume the array will always be valid, and there will always be one correct answer. */
+
+function isSortedAndHow(array) {
+  const ascArray = array.slice();
+  const dscArray = array.slice();
+
+  ascArray.sort((a, b) => a - b);
+  dscArray.sort((a, b) => b - a);
+
+  if (JSON.stringify(array) === JSON.stringify(ascArray)) {
+    return "yes, ascending";
+  } else if (JSON.stringify(array) === JSON.stringify(dscArray)) {
+    return "yes, descending";
+  } else {
+    return "no";
+  }
+}
