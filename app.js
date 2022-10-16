@@ -423,17 +423,32 @@ function inAscOrder(arr) {
   return JSON.stringify(sortedArray) === JSON.stringify(arr) ? true : false;
 }
 
-
 /* Count the number of divisors of a positive integer n.
 
 Random tests go up to n = 500000. */
 
-function getDivisorsCnt(n){
+function getDivisorsCnt(n) {
   let count = 0;
 
   for (let i = 0; i <= n; i++) {
-    n%i === 0 ? count++ : null
+    n % i === 0 ? count++ : null;
   }
 
-  return count  
+  return count;
 }
+
+/* You are given a string containing 0's, 1's and one or more '?', where ? is a wildcard that can be 0 or 1.
+
+Return an array containing all the possibilities you can reach substituing the ? for a value.
+*/
+
+/* const test1 = "101?"; // -> ['1010', '1011']
+const test2 = "1?1?"; // -> ['1010', '1110', '1011', '1111']
+
+function possibilities(str) {
+
+}
+ */
+
+/* Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present). */
+const countSheeps = arrayOfSheep => arrayOfSheep.reduce((acc, curr) => curr === true ? acc + 1 : acc, 0);
