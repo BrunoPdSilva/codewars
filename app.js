@@ -451,4 +451,21 @@ function possibilities(str) {
  */
 
 /* Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present). */
-const countSheeps = arrayOfSheep => arrayOfSheep.reduce((acc, curr) => curr === true ? acc + 1 : acc, 0);
+const countSheeps = arrayOfSheep =>
+  arrayOfSheep.reduce((acc, curr) => (curr === true ? acc + 1 : acc), 0);
+
+/* Task:
+Write a function that accepts two integers and returns the remainder of dividing the larger value by the smaller value.
+
+Division by zero should return NaN. */
+
+function remainder(n, m) {
+  const numbers = [n, m];
+  numbers.sort((a, b) => a - b);
+
+  if (numbers[0] === 0) {
+    return NaN;
+  } else {
+    return parseInt(numbers[1] % numbers[0]);
+  }
+}
