@@ -469,3 +469,46 @@ function remainder(n, m) {
     return parseInt(numbers[1] % numbers[0]);
   }
 }
+
+/* You're writing code to control your town's traffic lights. You need a function to handle each change from green, to yellow, to red, and then to green again.
+
+Complete the function that takes a string as an argument representing the current state of the light and returns a string representing the state the light should change to.
+
+For example, when the input is green, output should be yellow. */
+
+function updateLight(current) {
+  return current === "green"
+    ? "yellow"
+    : current === "yellow"
+    ? "red"
+    : "green";
+}
+
+/* Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+
+For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1.
+
+Note: The function accepts an integer and returns an integer */
+
+function squareDigits(num) {
+  const digits = String(num).split("");
+
+  const square = digits.map(n => Math.pow(Number(n), 2));
+
+  return Number(square.join(""));
+}
+
+/* In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?
+
+Examples
+makeNegative(1);    // return -1
+makeNegative(-5);   // return -5
+makeNegative(0);    // return 0
+makeNegative(0.12); // return -0.12
+Notes
+The number can be negative already, in which case no change is required.
+Zero (0) is not checked for any specific sign. Negative zeros make no mathematical sense. */
+
+function makeNegative(num) {
+  return num < 0 ? num : -num;
+}
