@@ -541,3 +541,47 @@ function findAverage(array) {
     ? array.reduce((acc, curr) => acc + curr, 0) / array.length
     : 0;
 }
+
+/* Task:
+Leo's girlfriend asked him to buy a gift list during his next trip, now he wants to know how many of them will he be able to buy.
+
+Write a function to help Leo out. The first parameter of the function is Leo's budget; the second one is an array containing the price of each gift. You should return an integer representing the maximum amount of gifts Leo can buy.
+
+Example:
+Maximum budget: 20
+Gift List: [13, 2, 4, 6, 1]
+Should return 4.
+
+_ NOTE: All numbers will be integers >= 0, and the array will never be empty. _ */
+
+function howManyGifts(maxBudget, gifts) {
+  const sorted = gifts.sort((a, b) => a - b);
+  let sum = 0;
+  let count = 0;
+
+  for (let item of sorted) {
+    sum += item;
+    sum <= maxBudget ? count++ : count;
+  }
+
+  return count;
+}
+
+/* Bob needs a fast way to calculate the volume of a cuboid with three values: the length, width and height of the cuboid. 
+Write a function to help Bob with this calculation. */
+
+const getVolumeOfCuboid = (l, w, h) => l * w * h;
+
+/* Task Overview:
+You have to write a function that accepts three parameters:
+
+cap is the amount of people the bus can hold excluding the driver.
+on is the number of people on the bus excluding the driver.
+wait is the number of people waiting to get on to the bus excluding the driver.
+If there is enough space, return 0, and if there isn't, return the number of passengers he can't take.
+
+Usage Examples:
+cap = 10, on = 5, wait = 5 --> 0 # He can fit all 5 passengers
+cap = 100, on = 60, wait = 50 --> 10 # He can't fit 10 of the 50 waiting */
+
+const enough = (cap, on, wait) => ((x = on + wait - cap) > 0 ? x : 0);
