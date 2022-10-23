@@ -463,11 +463,7 @@ function remainder(n, m) {
   const numbers = [n, m];
   numbers.sort((a, b) => a - b);
 
-  if (numbers[0] === 0) {
-    return NaN;
-  } else {
-    return parseInt(numbers[1] % numbers[0]);
-  }
+  return numbers[0] === 0 ? NaN : parseInt(numbers[1] % numbers[0]);
 }
 
 /* You're writing code to control your town's traffic lights. You need a function to handle each change from green, to yellow, to red, and then to green again.
@@ -511,4 +507,37 @@ Zero (0) is not checked for any specific sign. Negative zeros make no mathematic
 
 function makeNegative(num) {
   return num < 0 ? num : -num;
+}
+
+/* Your task is to sum the differences between consecutive pairs in the array in descending order.
+
+Example
+[2, 1, 10]  -->  9
+In descending order: [10, 2, 1]
+
+Sum: (10 - 2) + (2 - 1) = 8 + 1 = 9
+
+If the array is empty or the array has only one element the result should be 0 (Nothing in Haskell, None in Rust). */
+
+function sumOfDifferences(arr) {
+  const descendingArray = arr.sort((a, b) => b - a);
+  const x = [];
+
+  for (let i = 0; i < descendingArray.length; ++i) {
+    if (descendingArray[i + 1] !== undefined) {
+      x.push(descendingArray[i] - descendingArray[i + 1]);
+    }
+  }
+
+  return x.reduce((acc, curr) => acc + curr, 0);
+}
+
+/* Write a function which calculates the average of the numbers in a given list.
+
+Note: Empty arrays should return 0. */
+
+function findAverage(array) {
+  return array.length > 0
+    ? array.reduce((acc, curr) => acc + curr, 0) / array.length
+    : 0;
 }
