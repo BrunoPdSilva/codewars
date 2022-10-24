@@ -585,3 +585,43 @@ cap = 10, on = 5, wait = 5 --> 0 # He can fit all 5 passengers
 cap = 100, on = 60, wait = 50 --> 10 # He can't fit 10 of the 50 waiting */
 
 const enough = (cap, on, wait) => ((x = on + wait - cap) > 0 ? x : 0);
+
+/* Write a function which converts the input string to uppercase. */
+
+const makeUpperCase = str => str.toUpperCase();
+
+/* Complete the function that takes a sequence of numbers as single parameter. 
+Your function must return the sum of the even values of this sequence.
+
+Only numbers without decimals like 4 or 4.0 can be even.
+
+The input is a sequence of numbers: integers and/or floats.
+
+Examples
+[4, 3, 1, 2, 5, 10, 6, 7, 9, 8]  -->  30   # because 4 + 2 + 10 + 6 + 8 = 30
+[]                               -->  0 */
+
+function sumEvenNumbers(input) {
+  const evenNumbers = test1.filter(n => n % 2 === 0);
+
+  return evenNumbers.reduce((acc, curr) => (acc += curr), 0);
+}
+
+/* The goal is to create a function 'numberToPower(number, power)' that "raises" the number up to power (ie multiplies number by itself power times).
+
+Examples
+numberToPower(3,2)  // -> 9 ( = 3 * 3 )
+numberToPower(2,3)  // -> 8 ( = 2 * 2 * 2 )
+numberToPower(10,6) // -> 1000000
+Note: Math.pow and some other Math functions like eval() and ** are disabled.
+ */
+
+function numberToPower(number, power) {
+  let x = number;
+
+  if (power === 0) return 1
+
+  for (let i = 1; i < power; i++) { x = x * number }
+
+  return x;
+}
