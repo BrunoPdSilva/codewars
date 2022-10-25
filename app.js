@@ -657,7 +657,79 @@ class Ship {
     this.draft = draft;
     this.crew = crew;
   }
-  isWorthIt = () => this.draft - (this.crew * 1.5) > 20
+  isWorthIt = () => this.draft - this.crew * 1.5 > 20;
 }
 
+/* Given a number n, return the number of positive odd numbers below n, EASY!
+
+Examples (Input -> Output)
+7  -> 3 (because odd numbers below 7 are [1, 3, 5])
+15 -> 7 (because odd numbers below 15 are [1, 3, 5, 7, 9, 11, 13])
+Expect large Inputs! */
+
+const oddCount = n => Math.floor(n / 2);
+
+/* Introduction and warm-up (highly recommended): Playing With Lists/Arrays Series
+
+Task
+Given an array/list of integers, find the Nth smallest element in the array.
+
+Notes
+Array/list size is at least 3.
+Array/list's numbers could be a mixture of positives , negatives and zeros.
+Repetition in array/list's numbers could occur, so don't remove duplications.
+Input >> Output Examples */
+
+function nthSmallest(arr, pos) {
+  const sorted = arr.sort((a, b) => a - b);
+
+  return sorted[pos - 1];
+}
+
+/* Task
+Given a list of digits, return the smallest number that could be formed from these digits, 
+using the digits only once (ignore duplicates). */
+
+function minValue(values) {
+  const x = new Set(values.sort((a, b) => a - b));
+
+  return Number([...x].join(""));
+}
+
+/* Task
+Given an array/list [] of integers , Construct a product array Of same size Such That prod[i] is equal 
+to The Product of all the elements of Arr[] except Arr[i]. */
+
+function productArray(numbers) {
+  let result = [];
+
+  for (let i = 0; i < numbers.length; i++) {
+    result.push(
+      numbers.reduce((acc, curr, index) => {
+        return i !== index ? acc * curr : acc * 1;
+      }, 1)
+    );
+  }
+
+  return result;
+}
+
+/*  Task
+Given an array of N integers, you have to find how many times you have to add up the smallest numbers 
+in the array until their Sum becomes greater or equal to K.
+*/
+
+function minimumSteps(numbers, value) {
+  let count = 0;
+
+  const sorted = numbers.sort((a, b) => a - b);
+  let sum = sorted[0];
+
+  for (let i = 1; sum < value; i++) {
+    sum += sorted[i];
+    count++;
+  }
+
+  return count;
+}
 
