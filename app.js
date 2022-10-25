@@ -733,3 +733,41 @@ function minimumSteps(numbers, value) {
   return count;
 }
 
+/* 
+Write a function reverse which reverses a list (or in clojure's case, any list-like data structure)
+
+(the dedicated builtin(s) functionalities are deactivated) */
+
+const reverse = array => {
+  let result = [];
+
+  for (let i = array.length - 1; i >= 0; i--) {
+    result.push(array[i]);
+  }
+
+  return result;
+};
+
+/* Check to see if a string has the same amount of 'x's and 'o's. 
+The method must return a boolean and be case insensitive. The string can contain any char.
+
+Examples input/output:
+
+XO("ooxx") => true
+XO("xooxx") => false
+XO("ooxXm") => true
+XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+XO("zzoo") => false */
+
+function XO(str) {
+  const lowerStr = str.toLowerCase();
+
+  let xCount = 0;
+  let oCount = 0;
+
+  lowerStr.split("").forEach(n => {
+    n === "x" ? xCount++ : n === "o" ? oCount++ : null;
+  });
+
+  return xCount === 0 && oCount === 0 ? true : xCount === oCount;
+}
