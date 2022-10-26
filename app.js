@@ -771,3 +771,31 @@ function XO(str) {
 
   return xCount === 0 && oCount === 0 ? true : xCount === oCount;
 }
+
+/* You will be given an array a and a value x. All you need to do is check whether the provided array contains the value.
+
+Array can contain numbers or strings. X can be either.
+
+Return true if the array contains the value, false if not. */
+
+const check = (a, x) => a.includes(x);
+
+/* Given an array of integers.
+
+Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers. 
+0 is neither positive nor negative.
+
+If the input is an empty array or is null, return an empty array.
+
+Example
+For input [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15], you should return [10, -65]. */
+
+function countPositivesSumNegatives(input) {
+  if (input === null || input.length === 0) return [];
+
+  const negative = input.filter(n => n < 0).reduce((a, c) => a + c, 0);
+  const positive = input.filter(n => n > 0);
+
+  return [positive.length, negative];
+}
+
