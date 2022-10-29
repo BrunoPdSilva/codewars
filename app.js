@@ -818,3 +818,32 @@ function incrementer(nums) {
           : n + i + 1
       );
 }
+
+/* Write a function to get the first element(s) of a sequence. Passing a parameter n (default=1) will return the first n element(s) of the sequence.
+
+If n == 0 return an empty sequence []
+
+Examples
+var arr = ['a', 'b', 'c', 'd', 'e'];
+first(arr) //=> ['a'];
+first(arr, 2) //=> ['a', 'b']
+first(arr, 3) //=> ['a', 'b', 'c'];
+first(arr, 0) //=> []; */
+
+const first = (arr, n) => n === undefined ? [arr[0]] : n === 0 ? [] : arr.slice(0, n);
+
+/* Some really funny web dev gave you a sequence of numbers from his API response as an sequence of strings!
+
+You need to cast the whole array to the correct type. */
+
+function toNumberArray(stringarray){
+  return stringarray.map(item => item.toString())
+}
+
+/* Complete the function which returns the weekday according to the input number: */
+
+function whatday(num) { 
+  const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+  return num >= 1 && num <= 7 ? weekDays[num - 1] : "Wrong, please enter a number between 1 and 7" 
+}
