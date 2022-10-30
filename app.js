@@ -830,20 +830,87 @@ first(arr, 2) //=> ['a', 'b']
 first(arr, 3) //=> ['a', 'b', 'c'];
 first(arr, 0) //=> []; */
 
-const first = (arr, n) => n === undefined ? [arr[0]] : n === 0 ? [] : arr.slice(0, n);
+const first = (arr, n) =>
+  n === undefined ? [arr[0]] : n === 0 ? [] : arr.slice(0, n);
 
 /* Some really funny web dev gave you a sequence of numbers from his API response as an sequence of strings!
 
 You need to cast the whole array to the correct type. */
 
-function toNumberArray(stringarray){
-  return stringarray.map(item => item.toString())
+function toNumberArray(stringarray) {
+  return stringarray.map(item => item.toString());
 }
 
 /* Complete the function which returns the weekday according to the input number: */
 
-function whatday(num) { 
-  const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+function whatday(num) {
+  const weekDays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-  return num >= 1 && num <= 7 ? weekDays[num - 1] : "Wrong, please enter a number between 1 and 7" 
+  return num >= 1 && num <= 7
+    ? weekDays[num - 1]
+    : "Wrong, please enter a number between 1 and 7";
 }
+
+/* In this Kata, you will be given a string and your task will be to return a list of 
+ints detailing the count of uppercase letters, lowercase, numbers and special characters, as follows.
+
+Solve("*'&ABCDabcde12345") = [4,5,5,3]. 
+--the order is: uppercase letters, lowercase, numbers and special charact */
+
+function solve(s) {
+  const arr = s.split("");
+
+  let count = { UP: 0, LOW: 0, NUM: 0, SPC: 0 };
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].match(/[A-Z]/)) {
+      count.UP++;
+    } else if (arr[i].match(/[a-z]/)) {
+      count.LOW++;
+    } else if (arr[i].match(/[0-9]/)) {
+      count.NUM++;
+    } else if (arr[i].match(/\W|_/)) {
+      count.SPC++;
+    }
+  }
+
+  return [count.UP, count.LOW, count.NUM, count.SPC];
+}
+
+/* The Office V - Find a Chair */
+function meeting(x, need) {
+  const spareChairsOnEachRoom = [];
+  const chairsTaken = [];
+
+  if (need === 0) return "Game On";
+
+  x.forEach(item => {
+    const busyChairs = item[0].length;
+    const totalChairs = item[1];
+
+    spareChairsOnEachRoom.push(
+      totalChairs - busyChairs <= 0 ? 0 : totalChairs - busyChairs
+    );
+  });
+
+  let s = 0;
+  for (let chair of spareChairsOnEachRoom) {
+    if (s !== need) {
+      s += chair;
+      chairsTaken.push(chair);
+    } else {
+      break;
+    }
+  }
+
+  return s < need ? "Not enough!" : chairsTaken;
+}
+/* https://www.codewars.com/kata/57f6051c3ff02f3b7300008b/train/javascript */
