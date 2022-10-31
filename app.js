@@ -914,3 +914,32 @@ function meeting(x, need) {
   return s < need ? "Not enough!" : chairsTaken;
 }
 /* https://www.codewars.com/kata/57f6051c3ff02f3b7300008b/train/javascript */
+
+/* Debug   function getSumOfDigits that takes positive integer to calculate sum of it's digits. 
+Assume that argument is an integer. */
+
+function getSumOfDigits(integer) {
+  return String(integer)
+    .split("")
+    .reduce((a, c) => a + Number(c), 0);
+}
+
+/* Your task is to write a function that takes a string and return a new string with all vowels removed.
+
+For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!". */
+
+const disemvowel = str => str.split("").filter(letter => !letter.match(/[a|e|i|o|u]/i)).join("")
+
+/* Your task is to create a function that does four basic mathematical operations.
+
+The function should take three arguments - operation(string/char), value1(number), value2(number).
+The function should return result of numbers after applying the chosen operation */
+
+function basicOp(o, v1, v2) {
+  switch (o) {
+    case "+": return v1 + v2; 
+    case "-": return v1 - v2;
+    case "*": return v1 * v2;
+    case "/": return v1 / v2;
+  }
+}
