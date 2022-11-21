@@ -955,9 +955,25 @@ function basicOp(o, v1, v2) {
 /* The string given to your function has had an "egg" inserted directly after each consonant. 
 You need to return the string before it became eggcoded. */
 
-function unscrambleEggs(word){
-  return word.replace(/egg/g, "")
+function unscrambleEggs(word) {
+  return word.replace(/egg/g, '');
 }
 
 /* In this kata you will create a function that takes a list of non-negative integers and strings 
 and returns a new list with the strings filtered out. */
+
+function filter_list(l) {
+  return l.filter(i => typeof i === 'number');
+}
+
+/* Your task is to make two functions ( max and min that receive a list of integers as input,
+and return the largest and lowest number in that list, respectively. */
+
+const min = l => Math.min(...l);
+const max = l => Math.max(...l);
+
+/* Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, 
+and the negatives become positives. */
+
+const invert = arr =>
+  arr.map(n => (n >= 0 ? Number(`-${n}`) : Number(String(n).replace('-', ''))));
