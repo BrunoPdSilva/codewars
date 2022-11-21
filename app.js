@@ -20,12 +20,12 @@ function splitCamel(string) {
   let array = [];
   for (let i = 0; i < string.length; i++) {
     if (string[i] == string[i].toUpperCase()) {
-      array.push(" ", string[i]);
+      array.push(' ', string[i]);
     } else {
       array.push(string[i]);
     }
   }
-  return array.join("");
+  return array.join('');
 }
 
 /* Write a function named first_non_repeating_letter that takes a string input, 
@@ -33,7 +33,7 @@ and returns the first character that is not repeated anywhere in the string. */
 
 function firstNonRepeatingLetter(string) {
   let word = string.toLowerCase();
-  let x = "";
+  let x = '';
   for (let i = 0; i < word.length; i++) {
     if (word.indexOf(word[i]) == word.lastIndexOf(word[i])) {
       x += word[i];
@@ -52,13 +52,13 @@ function firstNonRepeatingLetter(string) {
 If anything in the text isn't a letter, ignore it and don't return it. */
 
 function alphabetPosition(text) {
-  let positions = "";
+  let positions = '';
   text
     .toLowerCase()
-    .split("")
+    .split('')
     .forEach(letter =>
       letter.charCodeAt() >= 97 && letter.charCodeAt() <= 122
-        ? (positions += " " + (letter.charCodeAt() - 96))
+        ? (positions += ' ' + (letter.charCodeAt() - 96))
         : positions
     );
 
@@ -86,13 +86,13 @@ continue reducing in this way until a single-digit number is produced. The input
 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2 */
 
 function digital_root(n) {
-  let number = n.toString().split("");
+  let number = n.toString().split('');
   if (number.length > 1) {
     while (number.length > 1) {
       number = number
         .reduce((acc, curr) => (acc += Number(curr)), 0)
         .toString()
-        .split("");
+        .split('');
     }
     return Number(number);
   }
@@ -107,7 +107,7 @@ You need to return the highest scoring word as a string. If two words score the 
 appears earliest in the original string. */
 
 function high(str) {
-  const separeteWords = str.toLowerCase().split(" ");
+  const separeteWords = str.toLowerCase().split(' ');
 
   const eachWordScoreArray = separeteWords.map(word => {
     let wordValue = 0;
@@ -139,9 +139,9 @@ If there are numbers or special characters included in the string, they should b
 Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation". */
 
 function rot13(message) {
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-  const unicodeList = message.split("").map(letter => {
+  const unicodeList = message.split('').map(letter => {
     let uniCode = letter.charCodeAt() - 96;
 
     if (uniCode <= 13 && uniCode >= 1 && uniCode <= 26) {
@@ -159,7 +159,7 @@ function rot13(message) {
     }
     return letter;
   });
-  return unicodeList.join("");
+  return unicodeList.join('');
 }
 
 /* Here's the deal:
@@ -169,15 +169,15 @@ If the final result is longer than 140 chars it must return false.
 If the input or the result is an empty string it must return false. */
 
 function generateHashtag(str) {
-  if (str.charCodeAt() == 32 || str == "") return false;
-  const splitedStr = str.trim().toLowerCase().split(" ");
-  const noWhiteSpace = ["#"];
+  if (str.charCodeAt() == 32 || str == '') return false;
+  const splitedStr = str.trim().toLowerCase().split(' ');
+  const noWhiteSpace = ['#'];
 
   for (let word of splitedStr) {
-    if (word != "")
+    if (word != '')
       noWhiteSpace.push(word.replace(/^./, word[0].toUpperCase()));
   }
-  return noWhiteSpace.join("").length > 140 ? false : noWhiteSpace.join("");
+  return noWhiteSpace.join('').length > 140 ? false : noWhiteSpace.join('');
 }
 
 /* Write a function that will check if two given characters are the same case.
@@ -204,8 +204,8 @@ function sameCase(a, b) {
 Write a function feast that takes the animal's name and dish as arguments and returns true or false to indicate whether the beast is allowed to bring the dish to the feast. */
 
 function feast(beast, dish) {
-  const beastLetters = "" + beast[0] + beast[beast.length - 1];
-  const dishLetters = "" + dish[0] + dish[dish.length - 1];
+  const beastLetters = '' + beast[0] + beast[beast.length - 1];
+  const dishLetters = '' + dish[0] + dish[dish.length - 1];
 
   return beastLetters === dishLetters ? true : false;
 }
@@ -254,7 +254,7 @@ function Fighter(name, health, damagePerAttack) {
 }
 
 function declareWinner(fighter1, fighter2, firstAttacker) {
-  let winner = "";
+  let winner = '';
 
   if (fighter1.name === firstAttacker) {
     while (fighter1.health > 0 || fighter2.health > 0) {
@@ -291,7 +291,7 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
 /* In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number. */
 
 function highAndLow(numbers) {
-  const orderedNumbersArray = numbers.split(" ").sort((a, b) => a - b);
+  const orderedNumbersArray = numbers.split(' ').sort((a, b) => a - b);
 
   const lowestNumber = orderedNumbersArray[0];
   const highestNumber = orderedNumbersArray[orderedNumbersArray.length - 1];
@@ -307,9 +307,9 @@ Your task is to return a number from a string.
 const filterString = str =>
   Number(
     str
-      .split("")
+      .split('')
       .filter(item => /[0-9]/.test(item))
-      .join("")
+      .join('')
   );
 
 /* 
@@ -328,7 +328,7 @@ The input will always be made of only lowercase letters and will never be empty.
 
 function wordsToMarks(string) {
   return string
-    .split("")
+    .split('')
     .reduce((acc, curr) => (acc += curr.charCodeAt() - 96), 0);
 }
 
@@ -345,9 +345,9 @@ Complete the function which tests if a positive integer n is Harshad number, and
 
 function numberJoy(n) {
   const sum = String(n)
-    .split("")
+    .split('')
     .reduce((acc, curr) => (acc += Number(curr)), 0);
-  const reverseSum = Number(sum.toString().split("").reverse().join(""));
+  const reverseSum = Number(sum.toString().split('').reverse().join(''));
 
   return n % sum === 0 && sum * reverseSum === n ? true : false;
 }
@@ -364,10 +364,10 @@ position : 1 2 3 4 5 6 7 8 9 10 */
 function validISBN10(isbn) {
   if (/^[0-9]{9}[X0-9]$/.test(isbn)) {
     const product = isbn
-      .split("")
+      .split('')
       .reduce(
         (acc, curr, i) =>
-          curr === "X" ? acc + 10 * (i + 1) : acc + Number(curr) * (i + 1),
+          curr === 'X' ? acc + 10 * (i + 1) : acc + Number(curr) * (i + 1),
         0
       );
 
@@ -401,11 +401,11 @@ function isSortedAndHow(array) {
   dscArray.sort((a, b) => b - a);
 
   if (JSON.stringify(array) === JSON.stringify(ascArray)) {
-    return "yes, ascending";
+    return 'yes, ascending';
   } else if (JSON.stringify(array) === JSON.stringify(dscArray)) {
-    return "yes, descending";
+    return 'yes, descending';
   } else {
-    return "no";
+    return 'no';
   }
 }
 
@@ -473,11 +473,11 @@ Complete the function that takes a string as an argument representing the curren
 For example, when the input is green, output should be yellow. */
 
 function updateLight(current) {
-  return current === "green"
-    ? "yellow"
-    : current === "yellow"
-    ? "red"
-    : "green";
+  return current === 'green'
+    ? 'yellow'
+    : current === 'yellow'
+    ? 'red'
+    : 'green';
 }
 
 /* Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
@@ -487,11 +487,11 @@ For example, if we run 9119 through the function, 811181 will come out, because 
 Note: The function accepts an integer and returns an integer */
 
 function squareDigits(num) {
-  const digits = String(num).split("");
+  const digits = String(num).split('');
 
   const square = digits.map(n => Math.pow(Number(n), 2));
 
-  return Number(square.join(""));
+  return Number(square.join(''));
 }
 
 /* In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?
@@ -693,7 +693,7 @@ using the digits only once (ignore duplicates). */
 function minValue(values) {
   const x = new Set(values.sort((a, b) => a - b));
 
-  return Number([...x].join(""));
+  return Number([...x].join(''));
 }
 
 /* Task
@@ -765,8 +765,8 @@ function XO(str) {
   let xCount = 0;
   let oCount = 0;
 
-  lowerStr.split("").forEach(n => {
-    n === "x" ? xCount++ : n === "o" ? oCount++ : null;
+  lowerStr.split('').forEach(n => {
+    n === 'x' ? xCount++ : n === 'o' ? oCount++ : null;
   });
 
   return xCount === 0 && oCount === 0 ? true : xCount === oCount;
@@ -845,18 +845,18 @@ function toNumberArray(stringarray) {
 
 function whatday(num) {
   const weekDays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
   ];
 
   return num >= 1 && num <= 7
     ? weekDays[num - 1]
-    : "Wrong, please enter a number between 1 and 7";
+    : 'Wrong, please enter a number between 1 and 7';
 }
 
 /* In this Kata, you will be given a string and your task will be to return a list of 
@@ -866,7 +866,7 @@ Solve("*'&ABCDabcde12345") = [4,5,5,3].
 --the order is: uppercase letters, lowercase, numbers and special charact */
 
 function solve(s) {
-  const arr = s.split("");
+  const arr = s.split('');
 
   let count = { UP: 0, LOW: 0, NUM: 0, SPC: 0 };
 
@@ -890,7 +890,7 @@ function meeting(x, need) {
   const spareChairsOnEachRoom = [];
   const chairsTaken = [];
 
-  if (need === 0) return "Game On";
+  if (need === 0) return 'Game On';
 
   x.forEach(item => {
     const busyChairs = item[0].length;
@@ -911,7 +911,7 @@ function meeting(x, need) {
     }
   }
 
-  return s < need ? "Not enough!" : chairsTaken;
+  return s < need ? 'Not enough!' : chairsTaken;
 }
 /* https://www.codewars.com/kata/57f6051c3ff02f3b7300008b/train/javascript */
 
@@ -920,7 +920,7 @@ Assume that argument is an integer. */
 
 function getSumOfDigits(integer) {
   return String(integer)
-    .split("")
+    .split('')
     .reduce((a, c) => a + Number(c), 0);
 }
 
@@ -928,7 +928,11 @@ function getSumOfDigits(integer) {
 
 For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!". */
 
-const disemvowel = str => str.split("").filter(letter => !letter.match(/[a|e|i|o|u]/i)).join("")
+const disemvowel = str =>
+  str
+    .split('')
+    .filter(letter => !letter.match(/[a|e|i|o|u]/i))
+    .join('');
 
 /* Your task is to create a function that does four basic mathematical operations.
 
@@ -937,9 +941,23 @@ The function should return result of numbers after applying the chosen operation
 
 function basicOp(o, v1, v2) {
   switch (o) {
-    case "+": return v1 + v2; 
-    case "-": return v1 - v2;
-    case "*": return v1 * v2;
-    case "/": return v1 / v2;
+    case '+':
+      return v1 + v2;
+    case '-':
+      return v1 - v2;
+    case '*':
+      return v1 * v2;
+    case '/':
+      return v1 / v2;
   }
 }
+
+/* The string given to your function has had an "egg" inserted directly after each consonant. 
+You need to return the string before it became eggcoded. */
+
+function unscrambleEggs(word){
+  return word.replace(/egg/g, "")
+}
+
+/* In this kata you will create a function that takes a list of non-negative integers and strings 
+and returns a new list with the strings filtered out. */
