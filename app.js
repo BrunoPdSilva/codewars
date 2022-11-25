@@ -977,3 +977,15 @@ and the negatives become positives. */
 
 const invert = arr =>
   arr.map(n => (n >= 0 ? Number(`-${n}`) : Number(String(n).replace('-', ''))));
+
+/* Return the number (count) of vowels in the given string.
+
+We will consider a, e, i, o, u as vowels for this Kata (but not y).*/
+
+function getCount(str) {
+  let counter = 0;
+
+  str.split('').forEach(l => (l.match(/[a|e|i|o|u]/) ? counter++ : counter));
+
+  return counter;
+}
