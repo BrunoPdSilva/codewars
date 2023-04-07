@@ -995,11 +995,15 @@ Given a string, you must decide whether or not it contains a valid phone number.
 '02078834982' with no whitespace or special characters, else return "Not a phone number". */
 
 function isItANum(str) {
-  const number = str.split("").filter(n => n.match(/[0-9]/)).join("")
+  const number = str
+    .split('')
+    .filter(n => n.match(/[0-9]/))
+    .join('');
 
-  return number.length === 11 && number[0] === "0" ? number : "Not a phone number";
+  return number.length === 11 && number[0] === '0'
+    ? number
+    : 'Not a phone number';
 }
-
 
 /* Given an array of numbers, return the difference between the largest and smallest values.
 
@@ -1023,4 +1027,27 @@ Your job here is to write a function, which takes a sorted array ary and a value
 could insert val to maintain the sorted-ness of the array. 
 The input array will always be sorted in ascending order. It may contain duplicates. */
 
-const keepOrder = (ary, val) => [...ary, val].sort((a, b) => a - b).indexOf(val);
+const keepOrder = (ary, val) =>
+  [...ary, val].sort((a, b) => a - b).indexOf(val);
+
+/* Crie a função "consecutive(arr)" que recebe um array de números inteiros e retorna o número mínimo de inteiros necessários 
+para tornar o conteúdo de arr consecutivo do número mais baixo para o mais alto.
+
+Por exemplo:
+Se arr contém [4, 8, 6], então a saída deve ser 2 porque dois números precisam ser adicionados ao array (5 e 7) para 
+torná-lo um array consecutivo de números de 4 a 8. Os números em arr serão únicos. */
+
+function consecutive(arr) {
+  let missingNumbers = 0;
+
+  arr.sort((a, b) => a - b).forEach((number, index, arr) => {
+    const difference = arr[index + 1] - number - 1;
+
+    if (difference > 0) {
+      missingNumbers += difference;
+    }
+  })
+
+  return missingNumbers
+}
+
