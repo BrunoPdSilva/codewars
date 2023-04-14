@@ -1,4 +1,4 @@
-/*Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+/* Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
 It should remove all values from list a, which are present in list b keeping their order.*/
 
 function arrayDiff(a, b) {
@@ -1040,14 +1040,30 @@ torná-lo um array consecutivo de números de 4 a 8. Os números em arr serão �
 function consecutive(arr) {
   let missingNumbers = 0;
 
-  arr.sort((a, b) => a - b).forEach((number, index, arr) => {
-    const difference = arr[index + 1] - number - 1;
+  arr
+    .sort((a, b) => a - b)
+    .forEach((number, index, arr) => {
+      const difference = arr[index + 1] - number - 1;
 
-    if (difference > 0) {
-      missingNumbers += difference;
-    }
-  })
+      if (difference > 0) {
+        missingNumbers += difference;
+      }
+    });
 
-  return missingNumbers
+  return missingNumbers;
 }
 
+// TODO
+// * Exclamation marks series #7: Remove words from the sentence if it contains one exclamation mark
+
+function remove(string) {
+  const words = string.split(' ');
+
+  const filteredWords = words.filter(word => {
+    const exclamationMarks = word.split('!').length - 1;
+
+    return exclamationMarks !== 1;
+  });
+
+  return filteredWords.join(' ');
+}
