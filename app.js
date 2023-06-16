@@ -1056,3 +1056,39 @@ function number(array) {
   const result = array.map((item, i) => `${i + 1}: ${item}`);
   return result.length ? result : [];
 }
+
+/* Task
+You are given a string representing a number in binary. Your task is to delete all the unset bits in this string
+and return the corresponding number (after keeping only the '1's). */
+
+/* const test1 = "11010101010101"; // 255
+const test2 = "111"; // 7
+const test3 = "1000000"; // 1
+const test5 = "000"; // 0
+
+function eliminateUnsetBits(number) {
+  const bitsSettled = number.split("").filter(n => n === "1").join("");
+
+  for (let i = bitsSettled.length - 1; i >= 0; i--) {
+    let count = 0;
+
+    
+  }
+}
+console.log(eliminateUnsetBits(test1));
+ */
+
+// $ Find array
+
+function findArray(arr1, arr2) {
+  const newArray = [];
+  arr2.forEach(index => {
+    if (index <= arr1.length - 1) {
+      newArray.push(arr1[index]);
+    }
+  });
+
+  return newArray;
+}
+
+console.log(findArray([0, 1, 5, 2, 1, 8, 9, 1, 5], [1, 4, 7])); // [5, 3, 1];
